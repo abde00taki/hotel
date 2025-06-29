@@ -1,0 +1,90 @@
+/* hadi limag lwla fi home page  */
+.homeContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0)), url('test2.jpg');
+  background-position: center;
+  background-size:cover;
+  
+}
+/* hada navbar  */
+.navbar {
+  box-shadow: 0 0 8px rgba(235, 235, 235, 0.34);
+  background-color: rgba(0, 0, 0, 0.308);
+  z-index: 999;
+}
+
+/* titre-and-paragraph   */
+.titre-and-paragraph {
+  background-color: rgba(0, 0, 0, 0.301);
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(245, 245, 245, 0.495);
+}
+
+/* hadi lboton li kayna fi page home  */
+.btn-home {
+  border-radius: 5%;
+  background-color: rgba(245, 245, 245, 0.705);
+  width: 50%;
+  padding: 4px;
+}
+.textBtnHome {
+  color: rgb(255, 128, 0);
+}
+
+/* hadi sora dyal badroom  */
+.image {
+  width: 21rem;
+}
+/* hada ditay dyal apartment  */
+.apartmentContainer{
+  width: 75%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.37);
+  border-radius: 10px;
+  padding: 10px;
+}
+.apartment-ditai{
+  padding: 20px;
+
+}
+/* hadi apartment 2 li fiha video  */
+.containerApartment2 {
+ background-image:linear-gradient(rgba(0, 0, 0, 0.537)), url("badroom.webp");
+ background-position: center;
+  background-size:100% 75%;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 100%;
+}
+.videos {
+width: 50%;
+border-radius: 20px;
+}
+
+/* hado licard li kayhdro 3la lotel  */
+.cardHotel {
+  width: 19rem;
+}
+.cardHotelBody {
+  background-color: rgba(255, 153, 0, 0.358);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(251, 125, 0, 0.276);
+}
+
+/* hada nav bar dyal hotel product  */
+.list-inline-item {
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: black;
+  color: whitesmoke;
+  width: 150px;
+  text-align: center;
+}
+.product-hotel {
+  margin-top: 100px;
+}
+.hotel-peoducts-ditails {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.37);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 30px;
+}
