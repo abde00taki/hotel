@@ -15,6 +15,9 @@ export default function Navbar() {
                         <li className="nav-item ">
                             <a className="nav-link fs-5 mx-4 text-light " href="#">Home </a>
                         </li>
+                        <li className="nav-item ">
+                            <a className="nav-link fs-5 mx-4 text-light " href="#">Apartment </a>
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link  mx-4 fs-5 text-light" href="#">Rooms</a>
                         </li>
