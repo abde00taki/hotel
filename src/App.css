@@ -70,6 +70,10 @@ border-radius: 20px;
 }
 
 /* hada nav bar dyal hotel product  */
+.active {
+  background-color: orange;
+ 
+}
 .list-inline-item {
   border: 2px solid black;
   padding: 5px;
@@ -81,6 +85,7 @@ border-radius: 20px;
 }
 .product-hotel {
   margin-top: 100px;
+  background-color: rgba(210, 224, 223, 0.336);
 }
 .hotel-peoducts-ditails {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.37);

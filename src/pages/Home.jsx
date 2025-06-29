@@ -2,9 +2,12 @@ import {  Routes, Route, NavLink } from "react-router-dom";
 import Card from "../component/Card";
 import Image from "../component/Image";
 // import Apartment from "./Apartment";
-import Navbar from "../component/Navbar";
-import Videos from "../component/Videos";
+// import Navbar from "../component/Navbar";
+// import Videos from "../component/Videos";
 import Apartment from "./Apartment";
+import Badroom from "./Badroom";
+import SwimingPool from "./SwimingPool";
+import Footer from "../component/Footer";
 
 export default function Home() {
 
@@ -74,26 +77,31 @@ export default function Home() {
                  <nav className="d-flex justify-content-center mt-4">
                 <div className="row mt-4">
                     <div className="col-md mt-4">
-                        <h3>Our products</h3>
+                        <h3 className="text-danger">Our products</h3>
                     </div>
                     <div className="col-md mt-4">
                         <ul className="d-flex list-inline mb-0">
                             <li className="mx-4 list-inline-item">
-                                <NavLink className="nav-product nav-link" to="/home">Apartment</NavLink>
+                                <NavLink className="nav-product nav-link" to="/apartment">Apartment</NavLink>
                             </li>
                             <li className="mx-4 list-inline-item">
-                                <NavLink className="nav-product nav-link" to="/about">rooms</NavLink>
+                                <NavLink className="nav-product nav-link" to="/rooms">rooms</NavLink>
                             </li>
                             <li className="mx-4 list-inline-item">
-                                <NavLink className="nav-product nav-link" to="/contact">swiming pool</NavLink>
+                                <NavLink className="nav-product nav-link" to="/swiming-pool">swiming pool</NavLink>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <Apartment />
+            <Routes >
+                <Route path="/apartment" element={<Apartment />} />
+                <Route path="/rooms" element={<Badroom />} />
+                <Route path="/swiming-pool" element={<SwimingPool />} />
            
+            </Routes>
             </section>
+            <Footer />
         </div>
     )
 }
