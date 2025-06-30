@@ -10,7 +10,7 @@ import { MdNightlightRound } from "react-icons/md";
 
 function App() {
 
-  const [darckMod, setDarckMod] = useState(true)
+  const [darckMod, setDarckMod] = useState(false)
   function chengeLight() {
     setDarckMod(!darckMod)
   }

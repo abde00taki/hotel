@@ -9,13 +9,14 @@ import Badroom from "./Badroom";
 import SwimingPool from "./SwimingPool";
 import Footer from "../component/Footer";
 import { useState } from "react";
+import Slide from "../component/Slide";
 
 export default function Home() {
 
     return (
         <div>
             <div className="homeContainer d-flex justify-content-center flex-column
-            align-items-center vh-100 text-light ">
+            align-items-center text-light ">
                 <div className="titre-and-paragraph">
                     <div className="btn-home">
                         <h2 className=" text-dark"><span className="textBtnHome">azilal</span>/ozoud</h2>
@@ -26,18 +27,28 @@ export default function Home() {
                     </h5>
                 </div>
             </div>
+
+            <section >
+                <Slide />
+            </section>
+
+
             <section className="container mt-4">
-                <div className="row">
-                    <div className=" col mt-4 d-flex justify-content-end">
+                <div className="row w-100">
+                    <div className="  col mt-4 d-flex justify-content-end">
                         <Image image="badroom.jpg" />
                     </div>
                     <div className=" col mt-4">
-                        <h2 className="text-danger">apartment</h2>
-                        <h5 className="mt-4 fs-2 ">this is our best apartment <br />
-                            , it has air conditioning and <br />
-                            many features and overlooks, <br />
-                            the valley</h5>
-                        <img src="rent.png" alt="" />
+                        <div className="back-img">
+                            <div>
+                            <h2 className="text-danger">apartment</h2>
+                            <h5 className="mt-4 fs-3 ">this is our best apartment <br />
+                                , it has air conditioning and <br />
+                                many features and overlooks, <br />
+                                the valley</h5>
+                            <img className="img-none" src="rent.png" alt="" />
+                        </div>
+                        </div>
                     </div>
                     <div className=" col mt-4">
                         <div className="apartmentContainer">
@@ -68,23 +79,27 @@ export default function Home() {
             </section>
 
             <section className="mt-4">
-                <div className="d-flex justify-content-center ">
-                    <Card title="4 aparltment" desc="the best apartment" image="apartments.png" />
-                    <Card title="6 badroom" desc="the best badroom" image="room.png" />
-                    <Card title="2 swiming pool" desc="the best swiming pool" image="pisine.png" />
+                <div className="d-flex justify-content-center">
+                    <div>
+                        <div className="row w-100  ">
+                            <Card title="4 aparltment" desc="the best apartment" image="apartments.png" />
+                            <Card title="6 badroom" desc="the best badroom" image="room.png" />
+                            <Card title="2 swiming pool" desc="the best swiming pool" image="pisine.png" />
+                        </div>
+                    </div>
                 </div>
             </section >
 
 
             <section className="product-hotel">
                 <nav className="d-flex justify-content-center mt-4">
-                    <div className="row mt-4">
-                        <div className="col-md mt-4">
+                    <div className="row w-100 mt-4">
+                        <div className="col-md-4 d-flex justify-content-center mt-4">
                             <h3 className="text-danger">Our products</h3>
                         </div>
-                        <div className="col-md mt-4">
+                        <div className="col-md-8 mt-4">
                             <ul className="d-flex list-inline mb-0">
-                                <li className="mx-4 list-inline-item">
+                                <li className="mx-3 list-inline-item">
                                     <NavLink className="nav-product nav-link" to="/apartment">Apartment</NavLink>
                                 </li>
                                 <li className="mx-4 list-inline-item">
