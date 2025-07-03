@@ -1,9 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import Card from "../component/Card";
 import Image from "../component/Image";
-// import Apartment from "./Apartment";
-// import Navbar from "../component/Navbar";
-// import Videos from "../component/Videos";
 import Apartment from "./Apartment";
 import Badroom from "./Badroom";
 import SwimingPool from "./SwimingPool";
@@ -12,6 +9,15 @@ import { useState } from "react";
 import Slide from "../component/Slide";
 
 export default function Home() {
+    
+    const [chenge, setChenge] =  useState(false);
+    const [visibel, setVisibel] = useState('apartment');
+
+     
+
+    function chengeProduct() {
+        setChenge(!chenge)
+    }
 
     return (
         <div>
@@ -100,24 +106,27 @@ export default function Home() {
                         <div className="col-md-8 mt-4">
                             <ul className="d-flex list-inline mb-0">
                                 <li className="mx-3 list-inline-item">
-                                    <NavLink className="nav-product nav-link" to="/apartment">Apartment</NavLink>
+                                    <NavLink onClick={() => setVisibel('apartment')} className="nav-product nav-link" >Apartment</NavLink>
                                 </li>
                                 <li className="mx-4 list-inline-item">
-                                    <NavLink className="nav-product nav-link" to="/rooms">rooms</NavLink>
+                                    <NavLink onClick={() => setVisibel('room')} className="nav-product nav-link">rooms</NavLink>
                                 </li>
                                 <li className="mx-4 list-inline-item">
-                                    <NavLink className="nav-product nav-link" to="/swiming-pool">swiming pool</NavLink>
+                                    <NavLink onClick={() => setVisibel('swiming')} className="nav-product nav-link">swiming pool</NavLink>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <Routes >
-                    <Route path="/apartment" element={<Apartment />} />
-                    <Route path="/rooms" element={<Badroom />} />
-                    <Route path="/swiming-pool" element={<SwimingPool />} />
-
-                </Routes>
+                <div className={visibel === 'apartment' ? "" : "d-none"}>
+                    <Apartment ></Apartment>
+                </div>
+                <div className={visibel === 'room' ? "" : "d-none"}>
+                    <Badroom />
+                </div>
+                <div className={visibel === 'swiming' ? "" : "d-none"}>
+                    <SwimingPool />
+                </div>
             </section>
             <Footer />
         </div>
