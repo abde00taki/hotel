@@ -7,6 +7,9 @@ import { CiLight } from "react-icons/ci";
 import { MdNightlightRound } from "react-icons/md";
 import { Link, Route, Routes } from 'react-router-dom';
 import ApartmentPages from './pages/ApartmentPage';
+import ApartmentDitails from './pages/ApartmentDitails';
+
+
 
 
 function App() {
@@ -16,7 +19,7 @@ function App() {
     setDarckMod(!darckMod)
   }
 
-  
+
 
 
   return (
@@ -35,7 +38,7 @@ function App() {
                   <Link to='/' className="nav-link fs-5 mx-4 text-light " >Home </Link>
                 </li>
                 <li className="nav-item ">
-                  <Link to='/apartment'  className="nav-link fs-5 mx-4 text-light " >Apartment </Link>
+                  <Link to='/apartment' className="nav-link fs-5 mx-4 text-light " >Apartment </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link  mx-4 fs-5 text-light" >Rooms</Link>
@@ -53,14 +56,15 @@ function App() {
             </div>
           </div>
         </nav>
-        
+
 
         <Routes >
           <Route path="/" element={<Home />} />
-          <Route path='/apartment' element={ <ApartmentPages /> } />
+          <Route path='/apartment' element={<ApartmentPages />} />
+          <Route path="/apartment/:id" element={<ApartmentDitails />} />
         </Routes>
 
-        
+
 
       </div>
     </>
