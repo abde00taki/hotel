@@ -18,7 +18,7 @@ export default function Cards(props) {
                 </div>
                 <div className="card-footer d-flex justify-content-between">
                     <Link to={'/apartment/' + props.id} className="btn btn-primary">rent</Link>
-                    <button onClick={props.handleDelete(props.id)} className="btn btn-danger">delete</button>
+                    <button onClick={props.handleDelete} className="btn btn-danger">delete</button>
                 </div>
             </div>
            

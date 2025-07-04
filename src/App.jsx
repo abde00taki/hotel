@@ -8,6 +8,7 @@ import { MdNightlightRound } from "react-icons/md";
 import { Link, Route, Routes } from 'react-router-dom';
 import ApartmentPages from './pages/ApartmentPage';
 import ApartmentDitails from './pages/ApartmentDitails';
+import AddApartment from './pages/AddApartment';
 
 
 
@@ -25,7 +26,7 @@ function App() {
   return (
     <>
       <div style={{ backgroundColor: darckMod === true ? "black" : "white" }}>
-        <nav className="navbar navbar-expand-lg  position-fixed w-100">
+        <nav className="navbar navbar-expand-lg   position-fixed w-100" >
           <div className="container-fluid">
 
             <a className="navbar-brand mx-4 fs-3  text-light" href="#"> <img src="hotel.png" alt="" /> Hotel</a>
@@ -48,6 +49,7 @@ function App() {
                 </li>
 
               </ul>
+               <Link to='/addapartment' className="btn btn-success mx-3" >add apatment</Link>
               <button onClick={chengeLight} className='btn btn-warning'>
                 {darckMod && <MdNightlightRound />}
                 {!darckMod && <CiLight />}
@@ -58,11 +60,14 @@ function App() {
         </nav>
 
 
-        <Routes >
+       <div>
+         <Routes >
           <Route path="/" element={<Home />} />
           <Route path='/apartment' element={<ApartmentPages />} />
           <Route path="/apartment/:id" element={<ApartmentDitails />} />
+          <Route path="/addapartment" element={<AddApartment />} />
         </Routes>
+       </div>
 
 
 
