@@ -7,6 +7,7 @@ import SwimingPool from "./SwimingPool";
 import Footer from "../component/Footer";
 import { useState } from "react";
 import Slide from "../component/Slide";
+import Navbar from "../component/Navbar";
 
 export default function Home() {
     
@@ -21,6 +22,7 @@ export default function Home() {
 
     return (
         <div>
+            <Navbar  chow="nav" />
             <div className="homeContainer d-flex justify-content-center flex-column
             align-items-center text-light ">
                 <div className="titre-and-paragraph">

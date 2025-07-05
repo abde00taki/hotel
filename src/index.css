@@ -1,0 +1,21 @@
+/* hadi lpage dyal admin  */
+.product-container {
+    background-color: rgba(18, 2, 44, 0.788);
+    background-image: url('Work-2.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: right ;
+
+}
+.sidebar {
+    background-color: rgb(18, 2, 44) ;
+    
+}
+.post-container {
+    background-color: rgba(0, 0, 0, 0.459);
+    box-shadow: 0 0 8px rgba(255, 192, 203, 0.187);
+    
+}
+.btn-admin {
+    background-color: pink;
+}
