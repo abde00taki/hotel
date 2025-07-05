@@ -3,7 +3,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards from "../component/Cards";
-import { Link } from "react-router-dom";
 
 
 
@@ -38,7 +37,7 @@ export default function ApartmentPages() {
                 <div  className="row w-100 ">
                     {products && products.map(product => (
                         <div className="col-md" key={product.id}>
-                            <Cards title={product.title} price={product.price} desc={product.desc} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)} />
+                            <Cards title={product.title} price={product.price} desc={product.desc} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)} context='user' />
                         </div>
                     ))}
                 </div>
