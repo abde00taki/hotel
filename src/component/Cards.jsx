@@ -39,13 +39,16 @@ export default function Cards(props) {
 
                     <div className="d-flex justify-content-center w-100">
                         {props.context !== 'admin' ? (<Link to={'/apartment/' + props.id} className="btn btn-dark w-75"> rent </Link>) :
-                            (<button onClick={props.handleDelete} className="btn btn-danger"> delet </button>)}
+                            ( <div>
+                                <hr />
+                                <button onClick={props.handleDelete} className="btn w-100" style={{backgroundColor: "pink"}}> delet </button>
+                                <Link to={ '/update/' +props.id} onClick={props.handleUpdate} className="btn btn-warning w-100 mt-2" > update </Link>
+                            </div>
+                            )}
                     </div>
                 </div>
             </div>
             </div>
-            
-
         </>
     )
 }

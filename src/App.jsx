@@ -10,6 +10,7 @@ import ApartmentPages from './pages/ApartmentPage';
 import ApartmentDitails from './pages/ApartmentDitails';
 import AddApartment from './admin/admin';
 import Navbar from './component/Navbar';
+import Update from './admin/Apdate';
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/apartment' element={<ApartmentPages />} />
           <Route path="/apartment/:id" element={<ApartmentDitails />} />
           <Route path="/admin" element={<AddApartment />} />
+          <Route path="/update/:id" element={<Update />} />
         </Routes>
        </div>
 

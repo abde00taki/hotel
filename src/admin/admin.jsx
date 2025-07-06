@@ -4,6 +4,7 @@ import Cards from "../component/Cards";
 import { NavLink } from "react-router-dom";
 
 export default function AddApartment() {
+    const [chenge, setChenge] = useState("")
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState(Number)
@@ -40,6 +41,7 @@ export default function AddApartment() {
                 .catch(err => console.error(err));
         }
     };
+
     return (
         <>
             <div className="row w-100">
@@ -48,72 +50,81 @@ export default function AddApartment() {
                         <h2 className="text-light text-center mt-3" >admin</h2>
                         <hr className="text-light" />
                         <div className="d-flex justify-content-center flex-column p-2">
-                            <NavLink className="btn  W-100 mt-3" style={{backgroundColor: "pink"}}>POST APARTMENT</NavLink>
-                            <NavLink className="btn btn-light W-100 mt-3" >DELETE AND APDATE</NavLink>
+                            <NavLink onClick={() => setChenge('post')} className="btn  W-100 mt-3" style={{ backgroundColor: chenge === 'post' ? "pink" : "white" }}>POST APARTMENT</NavLink>
+                            <NavLink onClick={() => setChenge('deletet')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'deletet' ? "pink" : "white" }} >DELETE AND APDATE</NavLink>
+                            <NavLink onClick={() => setChenge('update')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'update' ? "red" : "white" }} >APDATE</NavLink>
+                            {chenge === 'update' && (
+                                 <p className="text-danger">plase choice apartmrnt</p> 
+                            )}
                             <img src="admin.png" alt="" />
                         </div>
 
                     </div>
                 </div>
                 <div className="product-container col-md-9 container">
-                    <form action="" className="d-flex justify-content-center align-items-center vh-100 flex-column text-light " onSubmit={handleSubmit} >
-                        <div className="post-container w-75 p-4 rounded-3">
-                            <label  htmlFor="">
-                                add title the apartment
-                            </label>
-                            <input
-                                type="text"
-                                onChange={(e) => setTitle(e.target.value)}
-                                value={title}
-                                className="form-control mt-2"
-                            />
-                            <label htmlFor="">
-                                add description
-                            </label>
-                            <input
-                                type="text"
-                                onChange={(e) => setDesc(e.target.value)}
-                                value={desc}
-                                className="form-control mt-2"
-                            />
-                            <label htmlFor="">
-                                add price
-                            </label>
-                            <input
-                                type="number"
-                                onChange={(e) => setPrice(e.target.value)}
-                                value={price}
-                                className="form-control mt-2"
-                            />
-                            <label htmlFor="">
-                                add image
-                            </label>
-                            <input
-                                type="text"
-                                onChange={(e) => setImage(e.target.value)}
-                                value={image}
-                                className="form-control mt-2"
-                            />
-                            <div className="d-flex justify-content-center">
-                                <button className="btn  mt-2 w-25 "  style={{backgroundColor: "pink"}} type="submit">add</button>
-                            </div>
-                        </div>
-                    </form>
-                    <hr />
-                    <div className="apartment-container">
-
-                        <div className="row w-100 ">
-                            {products && products.map(product => (
-                                <div className="col-md" key={product.id}>
-                                    <Cards title={product.title} price={product.price} desc={product.desc} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)}
-                                        context='admin' />
+                    <div className={chenge === "post" ? "" : "d-none"} >
+                        <form action="" className="d-flex justify-content-center align-items-center vh-100 flex-column text-light " onSubmit={handleSubmit} >
+                            <div className="post-container w-75 p-4 rounded-3">
+                                <label htmlFor="">
+                                    add title the apartment
+                                </label>
+                                <input
+                                    type="text"
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    value={title}
+                                    className="form-control mt-2"
+                                  />
+                                <label htmlFor="">
+                                    add description
+                                </label>
+                                <input
+                                    type="text"
+                                    onChange={(e) => setDesc(e.target.value)}
+                                    value={desc}
+                                    className="form-control mt-2"
+                                />
+                                <label htmlFor="">
+                                    add price
+                                </label>
+                                <input
+                                    type="number"
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    value={price}
+                                    className="form-control mt-2"
+                                />
+                                <label htmlFor="">
+                                    add image
+                                </label>
+                                <input
+                                    type="text"
+                                    onChange={(e) => setImage(e.target.value)}
+                                    value={image}
+                                    className="form-control mt-2"
+                                />
+                                <div className="d-flex justify-content-center">
+                                    <button className="btn  mt-2 w-25 " style={{ backgroundColor: "pink" }} type="submit">add</button>
                                 </div>
-                            ))}
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div className={chenge !== "delete" ? "" : "d-none"}>
+                        <div className="apartment-container">
+
+                            <div className="row w-100 ">
+                                {products && products.map(product => (
+                                    <div className="col-md" key={product.id}>
+                                        <Cards title={product.title} price={product.price} desc={product.desc} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)}
+                                            context='admin' />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </>
     )
 }

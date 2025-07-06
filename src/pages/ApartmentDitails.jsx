@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import Navbar from "../component/Navbar";
 
 export default function ApartmentDitails() {
   const [product, setProducts] = useState()
@@ -25,7 +26,7 @@ export default function ApartmentDitails() {
           <h1>{product.title}</h1>
           <p>{product.desc}</p>
           <p>{product.price}</p>
-          <img src={product.image} alt={product.title} />
+          <img src={'/'+product.image} alt={product.title} />
         </div>
       </div>
     </>
