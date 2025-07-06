@@ -4,22 +4,37 @@ import Cards from "../component/Cards";
 import { NavLink } from "react-router-dom";
 
 export default function AddApartment() {
-    const [chenge, setChenge] = useState("")
+    const [chenge, setChenge] = useState("post")
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState(Number)
-    const [image, setImage] = useState('')
-    const handleSubmit = async (e) => {
+    const [image, setImage] = useState(null)
+    
+    
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const res = await axios.post('http://localhost:8888/products',
-                { title, desc, price, image }
-            );
-            alert('apartment added : ' + res.data.title);
-        } catch (error) {
-            console.error('Erreur POST:', error);
-        }
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("desc", desc);
+        formData.append("price", price);
+        formData.append("image", image);
+
+        axios
+            .post("http://localhost:8888/products", formData)
+            .then((res) => {
+                alert("image added");
+                setTitle("");
+                setDesc("");
+                setPrice("");
+                setImage(null);
+            })
+            .catch((err) => {
+                console.error(err);
+                alert("image not added");
+            });
     };
+
 
     // hado dyal get apartment 
     const [products, setProducts] = useState([])
@@ -31,7 +46,7 @@ export default function AddApartment() {
 
             });
     }, []);
-
+    // hada dyal delete apartment 
     const handleDelete = (id) => {
         if (confirm('do you want delete product')) {
             axios.delete(`http://localhost:8888/products/${id}`)
@@ -51,10 +66,10 @@ export default function AddApartment() {
                         <hr className="text-light" />
                         <div className="d-flex justify-content-center flex-column p-2">
                             <NavLink onClick={() => setChenge('post')} className="btn  W-100 mt-3" style={{ backgroundColor: chenge === 'post' ? "pink" : "white" }}>POST APARTMENT</NavLink>
-                            <NavLink onClick={() => setChenge('deletet')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'deletet' ? "pink" : "white" }} >DELETE AND APDATE</NavLink>
+                            <NavLink onClick={() => setChenge('delete')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'delete' ? "pink" : "white" }} >DELETE AND APDATE</NavLink>
                             <NavLink onClick={() => setChenge('update')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'update' ? "red" : "white" }} >APDATE</NavLink>
                             {chenge === 'update' && (
-                                 <p className="text-danger">plase choice apartmrnt</p> 
+                                <p className="text-danger">plase choice apartmrnt</p>
                             )}
                             <img src="admin.png" alt="" />
                         </div>
@@ -63,53 +78,57 @@ export default function AddApartment() {
                 </div>
                 <div className="product-container col-md-9 container">
                     <div className={chenge === "post" ? "" : "d-none"} >
-                        <form action="" className="d-flex justify-content-center align-items-center vh-100 flex-column text-light " onSubmit={handleSubmit} >
+                        <form
+                            onSubmit={handleSubmit}
+                            className="d-flex justify-content-center align-items-center vh-100 flex-column text-light"
+                        >
                             <div className="post-container w-75 p-4 rounded-3">
-                                <label htmlFor="">
-                                    add title the apartment
-                                </label>
+                                <label>add title the apartment</label>
                                 <input
                                     type="text"
                                     onChange={(e) => setTitle(e.target.value)}
                                     value={title}
                                     className="form-control mt-2"
-                                  />
-                                <label htmlFor="">
-                                    add description
-                                </label>
+                                />
+
+                                <label>add description</label>
                                 <input
                                     type="text"
                                     onChange={(e) => setDesc(e.target.value)}
                                     value={desc}
                                     className="form-control mt-2"
                                 />
-                                <label htmlFor="">
-                                    add price
-                                </label>
+
+                                <label>add price</label>
                                 <input
                                     type="number"
                                     onChange={(e) => setPrice(e.target.value)}
                                     value={price}
                                     className="form-control mt-2"
                                 />
-                                <label htmlFor="">
-                                    add image
-                                </label>
+
+                                <label>add image</label>
                                 <input
-                                    type="text"
-                                    onChange={(e) => setImage(e.target.value)}
-                                    value={image}
+                                    type="file"
+                                    onChange={(e) => setImage(e.target.files[0])}
                                     className="form-control mt-2"
                                 />
+
                                 <div className="d-flex justify-content-center">
-                                    <button className="btn  mt-2 w-25 " style={{ backgroundColor: "pink" }} type="submit">add</button>
+                                    <button
+                                        className="btn mt-2 w-25"
+                                        style={{ backgroundColor: "pink" }}
+                                        type="submit"
+                                    >
+                                        add
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
 
 
-                    <div className={chenge !== "delete" ? "" : "d-none"}>
+                    <div className={chenge === "delete" || chenge === 'update' ? "" : "d-none"}>
                         <div className="apartment-container">
 
                             <div className="row w-100 ">

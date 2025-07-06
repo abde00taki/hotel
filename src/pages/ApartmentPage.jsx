@@ -45,7 +45,7 @@ export default function ApartmentPages() {
                         <div className="col-md" key={product.id}>
                             <Cards title={product.title} price={product.price} desc={product.desc}
                                 image={product.image} id={product.id}
-                                handleDelete={() => handleDelete(product.id)} context='user' />
+                                handleDelete={() => handleDelete(product.id)} star={product.star} context='user' />
                         </div>
                     ))}
                 </div>
