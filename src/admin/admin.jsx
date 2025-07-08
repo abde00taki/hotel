@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import Cards from "../component/Cards";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function AddApartment() {
     const [chenge, setChenge] = useState("post")
@@ -74,24 +74,39 @@ export default function AddApartment() {
     return (
         <>
             {!isAuthenticated ? (
-                <div className="vh-100 d-flex flex-column justify-content-center align-items-center">
-                    <h2>Enter Admin Password</h2>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="form-control w-25 mt-2"
-                    />
-                    <button className="btn btn-primary mt-2" onClick={handleLogin}>
-                        Login
-                    </button>
+                <div className="row w-100 " style={{ backgroundColor: "rgb(185, 128, 238)" }} >
+                    <div className="col-md-6">
+                        <img className="w-100" src="password.png" alt="" />
+                    </div>
+                    <div className="col-md-6">
+                        <div className=" vh-100 d-flex flex-column justify-content-center align-items-center" >
+                            <div style={{ borderRadius: "10px", boxShadow: "0 0 3px white", padding: "50px", backgroundColor: "rgb(0, 0, 0, 0.100)" }}>
+                                <h2>Enter Admin Password</h2>
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="form-control w-100 mt-2"
+                                />
+                                <button className="btn btn-primary mt-2" onClick={handleLogin}>
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <div>
                     <div className="row w-100">
                         <div className="col-md-3 ">
                             <div className="sidebar  vh-100 w-25 text-break " style={{ position: "fixed" }}>
-                                <h2 className="text-light text-center mt-3" >admin</h2>
+                                <div className="d-flex justify-content-between">
+                                    <h2 className="text-light mx-4 mt-3" >admin</h2>
+                                    <div>
+                                        <Link to='/' ><img className="mt-4 mx-4" src="home.png" alt="" /></Link>
+                                        <Link to='/apartment' ><img className="mt-4 mx-4" src="kiss.png" alt="" /></Link>
+                                    </div>
+                                </div>
                                 <hr className="text-light" />
                                 <div className="d-flex justify-content-center flex-column p-2">
                                     <NavLink onClick={() => setChenge('post')} className="btn  W-100 mt-3" style={{ backgroundColor: chenge === 'post' ? "pink" : "white" }}>POST APARTMENT</NavLink>
