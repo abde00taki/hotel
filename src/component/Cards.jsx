@@ -43,7 +43,7 @@ export default function Cards(props) {
                         <p> {props.desc} </p>
 
                         <div className="d-flex justify-content-center w-100">
-                            {props.context !== 'admin' ? (<Link to={'/apartment/' + props.id} className="btn btn-dark w-75"> rent </Link>) :
+                            {props.context !== 'admin' ? (<Link to={'/apartment/' + props.id} className="btn btn-warning w-75"> rent </Link>) :
                                 (<div>
                                     <hr />
                                     <button onClick={props.handleDelete} className="btn w-100" style={{ backgroundColor: "pink" }}> delet </button>
@@ -54,6 +54,7 @@ export default function Cards(props) {
                     </div>
                 </div>
             </div>
+            
         </>
     )
 }
