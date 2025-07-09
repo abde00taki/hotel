@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import Cards from "../component/Cards";
 import { Link, NavLink } from "react-router-dom";
+import Messages from "../pages/Messages";
 
 export default function AddApartment() {
     const [chenge, setChenge] = useState("post")
@@ -10,6 +11,7 @@ export default function AddApartment() {
     const [price, setPrice] = useState(Number)
     const [star, setStar] = useState(Number)
     const [image, setImage] = useState(null)
+
 
 
     const handleSubmit = (e) => {
@@ -26,6 +28,7 @@ export default function AddApartment() {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
+
         })
             .then((res) => {
                 console.log(res.data);
@@ -33,12 +36,21 @@ export default function AddApartment() {
             .catch((err) => {
                 console.error(err);
             });
+        alert('apartment added')
+        setTitle("")
+        setPrice("")
+        setDesc("")
+        setStar("")
+        setImage("")
     };
 
 
 
     // hado dyal get apartment 
     const [products, setProducts] = useState([])
+
+    // hada li cayjib l3adad dyal lmisajat 
+    const [count, setCount] = useState(0);
     useEffect(() => {
 
         axios.get('http://localhost:8888/products')
@@ -46,7 +58,33 @@ export default function AddApartment() {
                 setProducts(res.data);
 
             });
+        // hada li cayjib l3adad dyal lmisajat
+        axios.get('http://localhost:8888/contact/count')
+            .then(res => setCount(res.data.count));
+
     }, []);
+
+    // hada li kay7eyed l3ada dyal lmisagat l9dam 
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8888/contact/count')
+            .then(res => setCount(res.data.count));
+    }, []);
+
+    const handleShowMessages = () => {
+        setChenge('message')
+        axios.get('http://localhost:8888/contact/show')
+            .then(res => {
+                setMessages(res.data);
+                if (setCount(0)) {
+                    alert('hello world')
+                }
+            });
+    };
+
+
+
     // hada dyal delete apartment 
     const handleDelete = (id) => {
         if (confirm('do you want delete product')) {
@@ -63,7 +101,7 @@ export default function AddApartment() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleLogin = () => {
-        if (password === "admin123") {
+        if (password === " ") {
             setIsAuthenticated(true);
         } else {
             alert("Wrong password");
@@ -102,20 +140,27 @@ export default function AddApartment() {
                             <div className="sidebar  vh-100 w-25 text-break " style={{ position: "fixed" }}>
                                 <div className="d-flex justify-content-between">
                                     <h2 className="text-light mx-4 mt-3" >admin</h2>
-                                    <div>
-                                        <Link to='/' ><img className="mt-4 mx-4" src="home.png" alt="" /></Link>
-                                        <Link to='/apartment' ><img className="mt-4 mx-4" src="kiss.png" alt="" /></Link>
+                                    <div className="mt-4 mx-3">
+                                        <NavLink
+                                            onClick={handleShowMessages}
+                                            className="bg-dark mt-4 text-white px-3 py-2 rounded"
+                                        >
+                                            <i className="bi bi-envelope-fill me-2"></i>
+                                            <span>{count}</span>
+                                        </NavLink>
                                     </div>
                                 </div>
                                 <hr className="text-light" />
                                 <div className="d-flex justify-content-center flex-column p-2">
+
                                     <NavLink onClick={() => setChenge('post')} className="btn  W-100 mt-3" style={{ backgroundColor: chenge === 'post' ? "pink" : "white" }}>POST APARTMENT</NavLink>
                                     <NavLink onClick={() => setChenge('delete')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'delete' ? "pink" : "white" }} >DELETE AND APDATE</NavLink>
                                     <NavLink onClick={() => setChenge('update')} className="btn btn-light W-100 mt-3" style={{ backgroundColor: chenge === 'update' ? "red" : "white" }} >APDATE</NavLink>
+
                                     {chenge === 'update' && (
                                         <p className="text-danger">plase choice apartmrnt</p>
                                     )}
-                                    <img src="admin.png" alt="" />
+                                    <img src="/admin.png" alt="" />
                                 </div>
 
                             </div>
@@ -185,24 +230,22 @@ export default function AddApartment() {
                                     <div className="row w-100 ">
                                         {products && products.map(product => (
                                             <div className="col-md" key={product.id}>
-                                                <Cards title={product.title} price={product.price} desc={product.desc} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)}
+                                                <Cards title={product.title} price={product.price} desc={product.desc} star={product.star} image={product.image} id={product.id} handleDelete={() => handleDelete(product.id)}
                                                     context='admin' />
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
+                            <div className={chenge !== 'message' ? "d-none" : ""}>
+                                <div className="vh-100">
+                                    <Messages />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             )}
-
-
-
-
-
-
-
         </>
     )
 }

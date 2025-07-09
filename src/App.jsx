@@ -11,6 +11,8 @@ import ApartmentDitails from './pages/ApartmentDitails';
 import AddApartment from './admin/admin';
 import Navbar from './component/Navbar';
 import Update from './admin/Apdate';
+import Contact from './pages/Contact';
+import Messages from './pages/Messages';
 
 
 
@@ -38,6 +40,8 @@ function App() {
           <Route path="/apartment/:id" element={<ApartmentDitails />} />
           <Route path="/admin" element={<AddApartment />} />
           <Route path="/update/:id" element={<Update />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/messages" element={<Messages />} />
         </Routes>
        </div>
 

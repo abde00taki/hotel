@@ -29,7 +29,7 @@ export default function Navbar(props) {
                                 <Link className="nav-link  mx-4 fs-5 text-light" >Rooms</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link  fs-5 text-light" >Contact us</Link>
+                                <Link to="/contact" className="nav-link  fs-5 text-light" >Contact us</Link>
                             </li>
 
                         </ul>
