@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import HoverRating from "./HoverRating";
 
 export default function Cards(props) {
 
@@ -40,6 +41,8 @@ export default function Cards(props) {
                             <h5 className={props.price < 4000 ? "text-danger" : ""} style={{ color: "orange", alignContent: "center" }} > {props.price} HD</h5>
                         </div>
                         <h6> {props.star}<img width="20px" src="star.png" alt="" /> </h6>
+                           <HoverRating id={props.id} initialStar={props.star} />
+
                         <p> {props.desc} </p>
 
                         <div className="d-flex justify-content-center w-100">
